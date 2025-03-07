@@ -46,7 +46,7 @@ The pipeline follows an **ETL** process:
 
 - **Error Handling**: API retries, logging, and NULL safeguards  
 - **Rate Limits**: Introduces delays between API calls  
-- **Monitoring**: Logs integrated with **CloudWatch** or **ELK**  
+- **Monitoring**: Logs integrated with **CloudWatch**  
 - **Scaling**: Docker-based deployment, Airflow scheduling, and database partitioning  
 - **Backup & Recovery**: Automated backups and audit logs  
 
