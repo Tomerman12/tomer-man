@@ -43,21 +43,13 @@ The dimensional model presented in the ERD follows a star schema design with a c
 
 ## Trade-offs Considered and Your Chosen Approach
 
-Your model reflects several intentional trade-offs:
+The model reflects several intentional trade-offs:
 
 1. **Star vs. Snowflake Schema**: You chose a star schema for its query performance benefits despite potential data redundancy. This prioritizes analysis speed over storage efficiency, which is appropriate for an analytics-focused marketing data warehouse.
 
-2. **SCD Type 2 vs. Other SCD Types**: 
-   - You implemented SCD Type 2 for all dimensions, which provides complete historical accuracy but increases storage requirements and complexity.
-   - This is particularly justified for bid and label fields that change frequently and require historical tracking.
-
-3. **Denormalization vs. Normalization**: 
-   - Your approach includes some denormalization (like portfolio information in DIM_CAMPAIGN) to simplify common queries.
-   - This trades some data redundancy for improved query performance and usability.
-
 ## How Model Handles Data Quality Issues
 
-Your model addresses data quality concerns through:
+The model addresses data quality concerns through:
 
 1. **NULL Handling**: 
    - The model appropriately allows NULLs where specified in the requirements (click_date, view_date, and label).
@@ -74,14 +66,14 @@ Your model addresses data quality concerns through:
 
 1. **Composite Indexes for Common Query Patterns**:
    - Add composite indexes on (platform_key, full_date) for platform-specific time-series analysis
-   - Create indexes on (account_key, campaign_key) for account-level campaign performance reporting
+   - Indexes on (account_key, campaign_key) for account-level campaign performance reporting
 
 2. **Partitioning Strategy**:
    - Partition the FACT_AD_PERFORMANCE table by date (monthly partitions) to improve query performance for time-based analysis
    - platform-based partitioning for very large datasets
 
 3. **Covering Indexes**:
-   - Create covering indexes that include commonly queried metric columns (impressions, clicks, cost) alongside dimension keys for reporting queries
+   - Covering indexes that include commonly queried metric columns (impressions, clicks, cost) alongside dimension keys for reporting queries
 
 4. **Materialized Views**:
    - Implement materialized views for common aggregation patterns (daily/weekly/monthly summaries by campaign, platform, etc.)
