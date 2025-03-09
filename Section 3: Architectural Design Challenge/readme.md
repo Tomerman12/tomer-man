@@ -58,7 +58,6 @@
 ### 1.3 Data Access Layer
 
 **Data Quality:**
-- **Great Expectations**: Framework for data validation
   - Validates data against expected patterns and thresholds
   - Generates data quality reports
   - Alerts on anomalies or drift in metrics
@@ -67,43 +66,31 @@
 - **dbt (data build tool)**: Transforms raw data into analytics models
   - Maintains testing, documentationb for all transformations
   - Enables version control of transformation logic
-  - Provides a central repository for business definitions
 
 **Data Catalog:**
 - **Amundsen/DataHub**: Metadata management and data discovery
   - Indexes all data assets with descriptions and ownership
-  - Shows lineage from raw events to reporting tables
   - Enables search and discovery for analysts
 
 **Data Marts:**
 - Curated views specific to marketing needs
-  - Conversion funnels by segment
   - Attribution models
   - Campaign effectiveness
 - **Self-Service**: Pre-aggregated tables for exploration
-  - Daily/weekly/monthly trend analysis
-  - User cohort analysis
-  - Feature usage patterns
 
 ### 1.4 Analytics Layer
 
 **Dashboards:**
 - **Real-time Dashboard**: Shows current activity and immediate trends
-  - Recent conversion rates
-  - Active users on comparison pages
-  - Real-time click-through rates
 
 **BI Tools:**
-- **Looker/Tableau**: For business analysts to create custom reports
+- **Looker/Tableau/PowerBI**: For business analysts to create custom reports
   - Self-service exploration of the data
-  - Scheduled reporting capabilities
   - Shareable dashboards and insights
 
 **Self-Service Analytics:**
 - **Custom interfaces** built on top of data marts
   - Simplified analysis tools for non-technical users
-  - Pre-built report templates
-  - Exportable results for presentations
 
 # 2. Implementation Considerations
 ## 2.1 Development Approach
@@ -175,7 +162,7 @@
 **ETL Efficiency:**
 
 - Optimize job scheduling to minimize compute costs
-- Use incremental processing where possible
+- Incremental processing where possible
 - Implement partitioning strategies to limit data scans
 
 **Monitoring and Analysis:**
